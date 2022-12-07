@@ -7,6 +7,7 @@ import androidx.activity.viewModels
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.spring
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxSize
@@ -109,7 +110,9 @@ fun NoteCard(noteUI: NoteUI, modifier: Modifier = Modifier) {
             .fillMaxWidth()
             .clickable {
                 expanded = !expanded
-            }, shape = MaterialTheme.shapes.extraSmall
+            },
+        colors= if (expanded) CardDefaults.elevatedCardColors(MaterialTheme.colorScheme.primaryContainer) else CardDefaults.cardColors(),
+        shape = MaterialTheme.shapes.extraSmall
     ) {
         Text(
             text = noteUI.content,
